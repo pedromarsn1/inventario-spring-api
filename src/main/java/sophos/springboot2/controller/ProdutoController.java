@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Produto;
+import sophos.springboot2.requests.ProdutoPostRequestBody;
+import sophos.springboot2.requests.ProdutoPutRequestBody;
 import sophos.springboot2.service.ProdutoService;
 import sophos.springboot2.util.DateUtil;
 
@@ -26,27 +28,27 @@ public class ProdutoController {
     public ResponseEntity<List<Produto>> list() {
         log.info(dateUtil.formatLocalTimeToDatabaseStyle(LocalDateTime.now()));
         return new ResponseEntity<>(produtoService.listAll(), HttpStatus.OK);
-        }
+    }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Produto> findById(@PathVariable int id) {
-        return new ResponseEntity<>(produtoService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(produtoService.findbyidOrThrowBadRequestException(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Produto> save(@RequestBody Produto produto){
-        return new ResponseEntity<>(produtoService.save(produto),HttpStatus.CREATED);
+    public ResponseEntity<Produto> save(@RequestBody ProdutoPostRequestBody produtoPostRequestBody) {
+        return new ResponseEntity<>(produtoService.save(produtoPostRequestBody), HttpStatus.CREATED);
     }
 
-    @DeleteMapping (path = "/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         produtoService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping (path = "/{id}")
-    public ResponseEntity<Void> replace(@RequestBody Produto produto) {
-        produtoService.replace(produto);
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Void> replace(@RequestBody ProdutoPutRequestBody produtoPutRequestBody) {
+        produtoService.replace(produtoPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
