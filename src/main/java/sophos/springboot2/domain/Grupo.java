@@ -4,26 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data //constroi todos os getters e setters da aplicação
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
-public class Produto {
+public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nome;
-    private int codProduto;
-//    private String unidade;
-    private int quantidade;
-//    private String grupo;
-
-
+    private int idGrupo;
+    private String nomeGrupo;
 }

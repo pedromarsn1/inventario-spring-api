@@ -33,9 +33,7 @@ public class ProdutoService { //responsável pela regra de negócios
                 .id(produtoPostRequestBody.getId())
                 .nome(produtoPostRequestBody.getNome())
                 .codProduto(produtoPostRequestBody.getCodProduto())
-                .unidade(produtoPostRequestBody.getUnidade())
                 .quantidade(produtoPostRequestBody.getQuantidade())
-                .grupo(produtoPostRequestBody.getGrupo())
                 .build());
 
     }
@@ -50,9 +48,7 @@ public class ProdutoService { //responsável pela regra de negócios
         Produto produto =Produto.builder()
                         .nome(produtoPutRequestBody.getNome())
                         .codProduto(produtoPutRequestBody.getCodProduto())
-                        .unidade(produtoPutRequestBody.getUnidade())
                         .quantidade(produtoPutRequestBody.getQuantidade())
-                        .grupo(produtoPutRequestBody.getGrupo())
                         .build();
 
         produtoRepository.save(produto);

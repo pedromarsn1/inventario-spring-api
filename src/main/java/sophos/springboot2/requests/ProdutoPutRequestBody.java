@@ -7,7 +7,7 @@ public class ProdutoPutRequestBody {
     private int id;
     private String nome;
     private int codProduto;
-    private String unidade;
+//    private String unidade;
     private int quantidade;
-    private String grupo;
+//    private String grupo;
 }
