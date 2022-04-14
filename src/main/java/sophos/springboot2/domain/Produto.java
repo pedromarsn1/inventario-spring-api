@@ -21,9 +21,16 @@ public class Produto {
     private int id;
     private String nome;
     private int codProduto;
-//    private String unidade;
+    private String unidade;
     private int quantidade;
-//    private String grupo;
+    private String grupo;
 
-
+//    {
+//        "id" : "123",
+//            "nome" : "Creme Seda",
+//            "codProduto" : "23444"
+//        "unidade" :  "Un",
+//            "quantidade" : "122",
+//            "grupo" :  "SEDA"
+//    }
 }
