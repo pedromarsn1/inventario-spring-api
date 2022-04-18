@@ -8,13 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Grupo;
+import sophos.springboot2.domain.Produto;
+import sophos.springboot2.repository.GrupoRepository;
 import sophos.springboot2.requests.GrupoPostRequestBody;
 import sophos.springboot2.requests.GrupoPutRequestBody;
+import sophos.springboot2.requests.ProdutoPutRequestBody;
 import sophos.springboot2.service.GrupoService;
 import sophos.springboot2.util.DateUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("grupos")
@@ -24,6 +28,7 @@ import java.util.List;
 public class GrupoController {
     @Autowired
     private final DateUtil dateUtil;
+    private final GrupoRepository grupoRepository;
     private final GrupoService grupoService;
 
     @GetMapping
@@ -49,8 +54,19 @@ public class GrupoController {
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Void> replace(@RequestBody GrupoPutRequestBody grupoPutRequestBody) {
-        grupoService.replaceGrupo(grupoPutRequestBody);
+    public ResponseEntity<Grupo> Put(@PathVariable(value = "id") int id, @RequestBody GrupoPutRequestBody grupoPutRequestBody) {
+        Optional<Grupo> antigoGrupo = grupoRepository.findById(id);
+
+        if(antigoGrupo.isPresent()){
+            Grupo grupo = antigoGrupo.get();
+            grupo.setNomeGrupo(grupoPutRequestBody.getNomeGrupo());
+
+            grupoRepository.save(grupo);
+            return new ResponseEntity<Grupo>(grupo, HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 }

@@ -7,13 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Produto;
+import sophos.springboot2.repository.ProdutoRepository;
 import sophos.springboot2.requests.ProdutoPostRequestBody;
 import sophos.springboot2.requests.ProdutoPutRequestBody;
 import sophos.springboot2.service.ProdutoService;
 import sophos.springboot2.util.DateUtil;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController // faz com que o retorno dos dados sejam apenas strings
 @RequestMapping("produtos") // rota no nível da classe
@@ -22,6 +25,7 @@ import java.util.List;
 public class ProdutoController {
     @Autowired
     private final DateUtil dateUtil;
+    private final ProdutoRepository produtoRepository;
     private final ProdutoService produtoService;
 
     @GetMapping
@@ -47,9 +51,21 @@ public class ProdutoController {
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Void> replace(@RequestBody ProdutoPutRequestBody produtoPutRequestBody) {
-        produtoService.replace(produtoPutRequestBody);
+    public ResponseEntity<Produto> Put(@PathVariable(value = "id") int id, @RequestBody ProdutoPutRequestBody produtoPutRequestBody) {
+        Optional<Produto> antigoProduto = produtoRepository.findById(id);
+        if (antigoProduto.isPresent()) {
+            Produto produto = antigoProduto.get();
+            produto.setNome(produtoPutRequestBody.getNome());
+            produto.setCodProduto(produtoPutRequestBody.getCodProduto());
+            produto.setUnidade(produtoPutRequestBody.getUnidade());
+            produto.setGrupo(produtoPutRequestBody.getGrupo());
+            produto.setQuantidade(produtoPutRequestBody.getQuantidade());
+            produtoRepository.save(produto);
+            return new ResponseEntity<Produto>(produto, HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
 }

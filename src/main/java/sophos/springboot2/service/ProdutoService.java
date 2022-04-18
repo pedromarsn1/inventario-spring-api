@@ -45,16 +45,5 @@ public class ProdutoService { //responsável pela regra de negócios
     }
 
 
-    public void replace(ProdutoPutRequestBody produtoPutRequestBody) {
-        delete(produtoPutRequestBody.getId());
-        Produto produto = Produto.builder()
-                .nome(produtoPutRequestBody.getNome())
-                .codProduto(produtoPutRequestBody.getCodProduto())
-                .unidade(produtoPutRequestBody.getUnidade())
-                .grupo(produtoPutRequestBody.getGrupo())
-                .quantidade(produtoPutRequestBody.getQuantidade())
-                .build();
 
-        produtoRepository.save(produto);
-    }
 }
