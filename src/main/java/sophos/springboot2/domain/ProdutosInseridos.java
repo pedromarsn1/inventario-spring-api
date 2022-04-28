@@ -10,12 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data //constroi todos os getters e setters da aplicação
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
-public class Produto {
+public class ProdutosInseridos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,5 +24,4 @@ public class Produto {
     private String unidade;
     private int quantidade;
     private String grupo;
-
 }

@@ -8,11 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Grupo;
-import sophos.springboot2.domain.Produto;
 import sophos.springboot2.repository.GrupoRepository;
-import sophos.springboot2.requests.GrupoPostRequestBody;
-import sophos.springboot2.requests.GrupoPutRequestBody;
-import sophos.springboot2.requests.ProdutoPutRequestBody;
+import sophos.springboot2.requests.grupo.GrupoPostRequestBody;
+import sophos.springboot2.requests.grupo.GrupoPutRequestBody;
 import sophos.springboot2.service.GrupoService;
 import sophos.springboot2.util.DateUtil;
 

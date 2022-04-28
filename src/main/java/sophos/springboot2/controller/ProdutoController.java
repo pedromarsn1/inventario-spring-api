@@ -8,12 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Produto;
 import sophos.springboot2.repository.ProdutoRepository;
-import sophos.springboot2.requests.ProdutoPostRequestBody;
-import sophos.springboot2.requests.ProdutoPutRequestBody;
+import sophos.springboot2.requests.produto.ProdutoPostRequestBody;
+import sophos.springboot2.requests.produto.ProdutoPutRequestBody;
 import sophos.springboot2.service.ProdutoService;
 import sophos.springboot2.util.DateUtil;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;

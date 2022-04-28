@@ -1,4 +1,4 @@
-package sophos.springboot2.requests;
+package sophos.springboot2.requests.grupo;
 
 import lombok.Data;
 

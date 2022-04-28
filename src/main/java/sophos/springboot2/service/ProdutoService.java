@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import sophos.springboot2.domain.Produto;
 import sophos.springboot2.repository.ProdutoRepository;
-import sophos.springboot2.requests.ProdutoPostRequestBody;
-import sophos.springboot2.requests.ProdutoPutRequestBody;
+import sophos.springboot2.requests.produto.ProdutoPostRequestBody;
 
 import java.util.List;
 

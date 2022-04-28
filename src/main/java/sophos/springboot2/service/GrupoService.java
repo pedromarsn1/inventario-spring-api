@@ -1,13 +1,12 @@
 package sophos.springboot2.service;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import sophos.springboot2.domain.Grupo;
 import sophos.springboot2.repository.GrupoRepository;
-import sophos.springboot2.requests.GrupoPostRequestBody;
-import sophos.springboot2.requests.GrupoPutRequestBody;
+import sophos.springboot2.requests.grupo.GrupoPostRequestBody;
+import sophos.springboot2.requests.grupo.GrupoPutRequestBody;
 
 import java.util.List;
 

@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sophos.springboot2.domain.Unidade;
 import sophos.springboot2.repository.UnidadeRepository;
-import sophos.springboot2.requests.UnidadePostRequestBody;
-import sophos.springboot2.requests.UnidadePutRequestBody;
+import sophos.springboot2.requests.unidade.UnidadePostRequestBody;
+import sophos.springboot2.requests.unidade.UnidadePutRequestBody;
 import sophos.springboot2.service.UnidadeService;
 import sophos.springboot2.util.DateUtil;
 
